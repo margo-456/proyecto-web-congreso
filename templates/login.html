@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Johana Salazar</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="static/img/favicon.png" rel="icon">
+  <link href="static/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files para cada uno de los componentes de bootstrap-->
+  <link href="static/vendor/aos/aos.css" rel="stylesheet">
+  <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="static/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="static/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="static/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="static/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="static/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Serenity - v4.7.0
+  * Template URL: https://bootstrapmade.com/serenity-bootstrap-corporate-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <div class="logo">
+        <h1 class="text-light"><a href="index.html">CONGRESOS</a></h1>
+        <!-- Barra de navegacion -->
+        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      </div>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+           <!-- clase navegacion con  botones  inicio y nosotros-->
+          <li><a class="active" href="index.html">Home</a></li>
+          <li class="dropdown"><a href="#"><span>About</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+               <!-- clase navegacion con diferentes botones desplegable-->
+              <li><a href="about.html">About</a></li>
+              <li><a href="team.html">Team</a></li>
+              
+            </ul>
+                <!-- clase navegacion para servicios,contactos,formatos-->
+          </li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="formatos.html">Formatos</a></li>
+          <li><a href="login.html">Ponente</a></li>
+
+          <li><a class="getstarted" href="about.html">Get Started</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+
+    </div>
+  </header><!-- End Header -->
+
+
+  <main id="main">
+    <!-- Estilos para cada uno de los diferentes partes del formulario -->
+
+    <style>
+        * {box-sizing: border-box;font-family:arial;}
+        .hide {display:none;}
+        .right {text-align:right;}
+        .error {border:1px solid Red;}
+        .nombre {width:100%}
+        .formulario {text-align:center;width:400px;border:1px solid #eee;padding:10px;}
+        .formulario label,.formulario label~input {
+            width: 50%;
+            display: inline-block;
+        }
+        .formulario label {text-align:right;padding-right:20px;}
+        .formulario>div {margin-top:10px;overflow:hidden;}
+        .boton {
+            border:none;
+            color:white;
+            padding:10px 20px;
+        }
+        .agregar {
+            background-color:green;
+        }
+        .enviar {
+            background-color:rgb(128, 0, 117);
+        }
+     
+        #listado {
+            border:1px solid #eee;
+            margin-top:20px;
+            width:400px;
+        }
+        #listado th {background-color:#eee;padding:5px 10px;}
+        #listado img {
+            cursor:pointer;
+        }
+        </style>
+     
+    </head>
+
+   
+    <body>
+        <center>
+<!-- Para registrar el ponente  -->
+
+     <center>  <h2> REGISTRAR PONENTE</h2> </center>
+    <form class="formulario" method="POST">
+        <div>
+            <!-- Para registrar el nombre ponente  -->
+            <label>Nombre del Ponente</label><input type="text" name="nombre">
+        </div>
+        <div>
+             <!-- Para registrar la cedula  -->
+            <label>Cedula</label><input type="number" name="edad" >
+        </div>
+        <div>
+            <br><input type="submit" value="Agregar" class="boton agregar"> <input type="button" value="Enviar" class='boton enviar'>
+        </div>
+    </form>
+      <!-- se crea los datos con el nombre y cedula -->
+    <table id="listado" class='hide'>
+        <thead>
+            <th>Nombre</th>
+            <th>Cedula</th>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+     
+    </body>
+    </html>
+     
+    <script>
+    // Evento que se ejecuta al pulsar el botón agregar
+    document.querySelector("input[type=submit]").addEventListener("click",function(e){
+        // cancelamos el evento
+        e.preventDefault();
+     
+        const nombre=document.querySelector("input[name=nombre]");
+        const edad=document.querySelector("input[name=edad]");
+     
+        // mostramos un error si no ha recibido el nombre
+        if (!nombre.value) {
+            nombre.classList.add("error");
+            return;
+        }
+        nombre.classList.remove("error");
+     
+        // mostramos un error si no ha recibido una edad
+        if (isNaN(parseInt(edad.value)) || parseInt(edad.value)<=0) {
+            edad.classList.add("error");
+            return;
+        }
+        edad.classList.remove("error");
+     
+        agregarFila(nombre.value, edad.value);
+        agregarInput(nombre.value, edad.value);
+     
+        //limpiamos los valores del input
+        edad.value="";
+        nombre.value="";
+        nombre.focus();
+     
+    });
+     
+    // Evento que se ejecuta cuando se pulsa sobre el botón enviar
+    document.querySelector(".enviar").addEventListener("click", function(e) {
+        this.closest("form").submit();
+    })
+     
+    /**
+     * Funcion para añadir el nombre y la edad en la tabla
+     *
+     * @param string nombre
+     * @param string edad
+     */
+    function agregarFila(nombre, edad) {
+        // añadimos el nombre a la tabla crando el tr, td's y el botón para eliminarlo
+        const tr=document.createElement("tr");
+     
+        const tdNombre=document.createElement("td");
+        let txt=document.createTextNode(nombre);
+        tdNombre.appendChild(txt);
+        tdNombre.className="nombre";
+     //para elimimar el nomnre
+        const tdEdad=document.createElement("td");
+        txt=document.createTextNode(edad);
+        tdEdad.appendChild(txt);
+        tdEdad.className="right";
+     //Para poder guardar 
+        const tdRemove=document.createElement("td");
+        const buttonRemove=document.createElement("img");
+        buttonRemove.src="garbage.png";
+        buttonRemove.onclick=eliminarFila;
+        tdRemove.appendChild(buttonRemove);
+      //obteneter los datos de a tabla y enviar
+        tr.appendChild(tdNombre);
+        tr.appendChild(tdEdad);
+        tr.appendChild(tdRemove);
+     
+        const tbody=document.getElementById("listado").querySelector("tbody").appendChild(tr);
+     
+        // eliminamos la clase que tiene oculta la tabla cando no hay ningun alumno
+        document.getElementById("listado").classList.remove("hide");
+    }
+     
+    /**
+     * Funcion para eliminar el usuario de la tabla y llamar a la funcion
+     * para eliminar al usuario del input oculto
+     */
+    function eliminarFila(e) {
+        const tr=this.closest("tr")
+        const nombre=tr.querySelector(".nombre").innerText;
+        const edad=tr.querySelector(".right").innerText;
+     
+        eliminarInput(nombre, edad);
+        tr.remove();
+     
+        // Si no hay ningun elemento en la lista, escondemos la tabla
+        if (document.getElementById("listado").querySelector("tbody").querySelectorAll("tr").length==0) {
+            document.getElementById("listado").classList.add("hide");
+        }
+    }
+     
+    /**
+     * Funcion para crear un input oculto para cuando se envie el formulario
+     * El nombre del input es un array de valores denominado "nombres" que
+     * contiene el nombre del alumno separado por un guion medio:
+     *      juan-22
+     *      manuel-19
+     *
+     * @param string nombre
+     * @param string edad
+     */
+    function agregarInput(nombre, edad) {
+        const input=document.createElement("input");
+        input.type="hidden";
+        input.name="nombres[]";
+        input.value=nombre+"-"+edad;
+     
+        document.querySelector("form").appendChild(input);
+    }
+     
+    /**
+     * Funcion para eliminar el input oculto
+     *
+     * @param string nombre
+     * @param string edad
+     */
+    function eliminarInput(nombre, edad) {
+        const input=document.querySelector("input[type=hidden][value="+nombre+"-"+edad+"]");
+        input.remove();
+    }
+    </script>
+
+
+</center>
+  
+
+</body>
+
+</html>
